@@ -1,0 +1,36 @@
+= StatOwl
+
+Convenient ways to compute statistics for a bunch of numbers.
+
+== Description
+
+This project computes the mean, median, variance, and standard deviation
+of numerical data. It also stores data in a MongoDB database for retention and future use.
+
+StatOwl has three basic interfaces: a Ruby API that extends the
+Array class, a command line application, and a Sinatra-based REST service.
+The output format can be plain text, HTML, XML, or JSON.
+
+== Synopsis
+
+statowl [options] command
+
+== Basic Command Line Usage
+
+Compute the mean:
+
+     $ echo '1,2,3,4' | statowl mean
+
+Read input data from the console and output statistics in plain text to the console:
+
+     $ echo '1,2,3,4' | statowl all
+
+Format the output as HTML:
+
+     $ echo '1,2,3,4' | statowl -f html all
+
+== Installing the Gem
+
+Simply type this at the command prompt:
+
+     $ sudo gem install statowl

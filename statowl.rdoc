@@ -1,0 +1,5 @@
+= statowl
+
+Generate this with
+    statowl rdoc
+After you have described your command line interface

@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+require 'webrick'
+
+include WEBrick
+
+puts "start"
+
+dir = Dir::pwd + '/doc'
+host = 'localhost'     # or the domain or IP address of your choice
+port = 8080          # or another port of your choice
+puts "serving up http://#{host}:#{port}/"
+
+s = HTTPServer.new(
+  :Port => port,
+  :DocumentRoot => dir
+)
+
+trap("INT") { s.shutdown }
+s.start

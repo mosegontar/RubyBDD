@@ -1,0 +1,102 @@
+#!/usr/bin/env ruby
+require 'gli'
+begin # XXX: Remove this begin/rescue before distributing your app
+require 'statowl'
+rescue LoadError
+  STDERR.puts "In development, you need to use `bundle exec bin/statowl` to run your app"
+  STDERR.puts "At install-time, RubyGems will make sure lib, etc. are in the load path"
+  STDERR.puts "Feel free to remove this message from bin/statowl now"
+  exit 64
+end
+
+include GLI::App
+
+program_desc 'Describe your application here'
+
+version Statowl::VERSION
+
+subcommand_option_handling :normal
+arguments :strict
+
+desc 'Describe some switch here'
+switch [:s,:switch]
+
+desc 'Describe some flag here'
+default_value 'the default'
+arg_name 'The name of the argument'
+flag [:f,:flagname]
+
+desc 'Describe mean here'
+arg_name 'Describe arguments to mean here'
+command :mean do |c|
+  c.desc 'Describe a switch to mean'
+  c.switch :s
+
+  c.desc 'Describe a flag to mean'
+  c.default_value 'default'
+  c.flag :f
+  c.action do |global_options,options,args|
+
+    # Your command logic here
+     
+    # If you have any errors, just raise them
+    # raise "that command made no sense"
+
+    puts "mean command ran"
+  end
+end
+
+desc 'Describe median here'
+arg_name 'Describe arguments to median here'
+command :median do |c|
+  c.action do |global_options,options,args|
+    puts "median command ran"
+  end
+end
+
+desc 'Describe variance here'
+arg_name 'Describe arguments to variance here'
+command :variance do |c|
+  c.action do |global_options,options,args|
+    puts "variance command ran"
+  end
+end
+
+desc 'Describe deviation here'
+arg_name 'Describe arguments to deviation here'
+command :deviation do |c|
+  c.action do |global_options,options,args|
+    puts "deviation command ran"
+  end
+end
+
+desc 'Describe all here'
+arg_name 'Describe arguments to all here'
+command :all do |c|
+  c.action do |global_options,options,args|
+    puts "all command ran"
+  end
+end
+
+pre do |global,command,options,args|
+  # Pre logic here
+  # Return true to proceed; false to abort and not call the
+  # chosen command
+  # Use skips_pre before a command to skip this block
+  # on that command only
+  true
+end
+
+post do |global,command,options,args|
+  # Post logic here
+  # Use skips_post before a command to skip this
+  # block on that command only
+end
+
+on_error do |exception|
+  # Error logic here
+  # return false to skip default error handling
+  true
+end
+
+exit run(ARGV)
