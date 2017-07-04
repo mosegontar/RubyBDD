@@ -57,4 +57,18 @@ describe "StatOwl statistics" do
     end
   end
 
+  describe "the array [1,4,6,8,100]" do
+    input = [1,4,6,8,100]
+    it "returns a variance of 1456.96" do
+      expect(input.variance).to be_within(0.001).of(1456.96)
+    end
+  end
+
+  describe "the array [1,2,3,4,5]" do
+    input = [1,2,3,4,5]
+    it "returns a variance of 2.0" do
+      expect(input.variance).to be_within(0.001).of(2.0)
+    end
+  end
+
 end

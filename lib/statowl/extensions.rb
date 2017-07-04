@@ -12,6 +12,14 @@ class Array
     (sort[mid-1] + sort[mid]) / 2.0
   end
 
+  def variance
+    squared_deviations = self.collect do |n|
+      (n - self.mean) ** 2
+    end
+    squared_deviations.sum / size
+  end
+
+  # for comparison of array means
   def <=>(other_array)
     if self.mean < other_array.mean
       -1
@@ -22,7 +30,7 @@ class Array
     end
   end
 
-  private
+  protected
 
   def sum
     reduce(:+)
