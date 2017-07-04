@@ -1,4 +1,5 @@
 class Array
+  include Comparable
 
   def mean
     sum / size.to_f
@@ -11,6 +12,15 @@ class Array
     (sort[mid-1] + sort[mid]) / 2.0
   end
 
+  def <=>(other_array)
+    if self.mean < other_array.mean
+      -1
+    elsif self.mean > other_array.mean
+      1
+    else
+      0
+    end
+  end
 
   private
 

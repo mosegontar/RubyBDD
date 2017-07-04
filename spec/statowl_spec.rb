@@ -45,4 +45,16 @@ describe "StatOwl statistics" do
     end
   end
 
+  describe "[1, 2, 3, 4] when compared based on mean" do
+    input = [1, 2, 3, 4]
+    it "is less than [2, 3, 4, 5]" do
+      expect(input < [2, 3, 4, 5]).to eq(true)
+      expect(input > [2, 3, 4, 5]).to eq(false)
+    end
+    it "is greater than [0, 1, 2, 3]" do
+      expect(input < [0, 1, 2, 3]).to eq(false)
+      expect(input > [0, 1, 2, 3]).to eq(true)
+    end
+  end
+
 end
