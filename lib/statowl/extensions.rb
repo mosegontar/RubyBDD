@@ -1,39 +1,55 @@
+
+class EmptyArrayException < Exception
+end
+
+# Extensions to the Array class
 class Array
   include Comparable
 
   def mean
+    verify_not_empty
+
     sum / size.to_f
   end
-  alias :average :mean
+  alias average mean
 
   def median
+    verify_not_empty
+
     mid = (size / 2)
     return sort[mid].to_f if size.odd?
-    (sort[mid-1] + sort[mid]) / 2.0
+    (sort[mid - 1] + sort[mid]) / 2.0
   end
 
   def variance
-    squared_deviations = self.collect do |n|
-      (n - self.mean) ** 2
-    end
-    squared_deviations.sum / size
+    verify_not_empty
+
+    collect { |n| (n - mean)**2 }.mean
   end
 
   # for comparison of array means
-  def <=>(other_array)
-    if self.mean < other_array.mean
+  def <=>(other)
+    verify_not_empty
+
+    if mean < other.mean
       -1
-    elsif self.mean > other_array.mean
+    elsif mean > other.mean
       1
     else
       0
     end
   end
 
-  protected
+  private
 
   def sum
     reduce(:+)
+  end
+
+  def verify_not_empty
+    if size == 0
+      raise EmptyArrayException, 'computing statistics on an empty array'
+    end
   end
 
 end
