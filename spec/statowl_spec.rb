@@ -17,4 +17,11 @@ describe "StatOwl statistics" do
     end
   end
 
+  describe "the Array [-2, -2, 2, 2]" do
+    input = [-2, -2, 2, 2]
+    it "returns an average of 0.0" do
+      expect(input.average).to eq(0.0)
+    end
+  end
+
 end
