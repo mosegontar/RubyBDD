@@ -2,6 +2,7 @@ require 'statowl'
 require_relative '../lib/statowl/extensions'
 
 describe 'StatOwl statistics' do
+
   describe 'the array [1, 2, 3, 4, 5]' do
     input = [1, 2, 3, 4, 5]
     it 'returns a mean of 3.0' do
@@ -76,4 +77,6 @@ describe 'StatOwl statistics' do
       expect { [].mean }.to raise_exception(EmptyArrayException, message)
     end
   end
+
+
 end

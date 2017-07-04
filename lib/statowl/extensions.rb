@@ -27,6 +27,10 @@ class Array
     collect { |n| (n - mean)**2 }.mean
   end
 
+  def standard_deviation
+    variance**(0.5) # could also use Math.sqrt
+  end
+
   # for comparison of array means
   def <=>(other)
     verify_not_empty

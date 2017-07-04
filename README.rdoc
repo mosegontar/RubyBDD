@@ -34,3 +34,8 @@ Format the output as HTML:
 Simply type this at the command prompt:
 
      $ sudo gem install statowl
+
+== Testing
+
+This project uses RSpec and Cucumber for Behavior Driven Development
+{Cucumber Test Results}[link:cuke_results.html]
